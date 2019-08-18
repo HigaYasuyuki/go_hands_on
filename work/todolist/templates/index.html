@@ -1,0 +1,43 @@
+{{ define "content" }}
+    <div class="row">
+        <div class="col-12">
+            <h1>ToDo List</h1>
+            <div class="row mb-3">
+                <div class="col-3">
+                    <a class="btn btn-success" href="/create">New Task</a>
+                </div>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Operation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {{ range . }}
+                <tr>
+                    <th scope="row">{{ .ID }}</th>
+                    <td><a href="/detail/{{ .ID }}">{{ .Description }}</a></td>
+                    <td>
+                        {{ if .IsComplete }}
+                        complete
+                        {{ else }}
+                        not yet
+                        {{ end }}
+                    </td>
+                    <td><a href="/delete/{{ .ID }}"><i class="fa fa-trash text-danger" aria-hidden="true"></i></a></td>
+                </tr>
+                {{ else }}
+                <th rowspan="4">no data</th>
+                {{ end }}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+{{ end }}

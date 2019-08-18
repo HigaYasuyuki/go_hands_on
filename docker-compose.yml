@@ -1,0 +1,35 @@
+version: '3'
+services:
+  app:
+    volumes:
+      - ./work:/go/work
+    build: .
+    ports:
+      - 8085:8085
+    tty: true
+  mysql:
+    image: mysql:5.7
+    volumes:
+      - ./mysql_data:/var/lib/mysql
+      - ./sqls:/docker-entrypoint-initdb.d
+    ports:
+      - "3306:3306"
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: gotodo
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=mysql
+      - PMA_USER=root
+      - PMA_PASSWORD=password
+    depends_on:
+      - mysql
+    ports:
+      - 8086:80
+    volumes:
+      - ./phpmyadmin_sessions:/sessions
