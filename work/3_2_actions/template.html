@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h1>Actions</h1>
+        {{/* 構造体のフィールドにアクセス */}}
+        <h2>構造体</h2>
+        <p>Name:{{ .user.Name }}</p>
+        <p>Age:{{ .user.Age }}</p>
+        {{/* Map */}}
+        <h2>Map</h2>
+        <p>Value:{{ .map.key1 }}</p>
+        {{/* range */}}
+        <h2>Slice</h2>
+        {{ range .slice }}
+        <p>{{ . }}</p>
+        {{ else }}
+        <p>No Data</p>
+        {{ end }}
+
+        {{ range .map }}
+        {{/* map の rangeはvalueが . の値になる */}}
+        <p>{{ . }}</p>
+        {{ end }}
+
+        {{ range $key, $val := .map }}
+        {{/* keyの値を取得 */}}
+        <p>key:{{ $key }},val:{{ $val }}</p>
+        {{ end }}
+        {{/* if */}}
+        <h2>If</h2>
+        {{ if eq .user.Name "b" }}
+        <p>His name is b.</p>
+        {{ else if eq .user.Name "a" }}
+        <p>His name is a.</p>
+        {{ else }}
+        <p>I don't know his name.</p>
+        {{ end }}
+
+        {{/* 空文字、nil、0、サイズ0の配列、スライス、マップなどは false として評価される */}}
+        {{ if not .bool }}
+        <p>false</p>
+        {{ end }}
+
+        {{/* 代入 */}}
+        <h2>代入</h2>
+        {{ $variable := "variable" }}
+        <p>{{ $variable }}</p>
+
+        {{ with "arg" }}
+        {{/* この中では . の値は "arg"  */}}
+        <p>{{ . }}</p>
+        {{ end }}
+
+        {{/* 関数呼び出し */}}
+        <h2>関数呼び出し</h2>
+        <p>{{ .time | fdate }}</p>
+    </body>
+</html>
