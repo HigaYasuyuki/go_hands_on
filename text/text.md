@@ -24,10 +24,17 @@
 - `go build -o hello hello.go` でビルドし、`./hello` で実行するのが基本
 - `go run hello.go` でビルドコマンドを省略して実行できる
 
-## 実習
-### 基礎1
-1_hello/hello.go
+## 文法基礎
+basics.md 参照
 
+## Webアプリ（ToDoリスト）を作る
+### net/http を使ってwebサーバを提供する
+- Go言語組み込みのhttpサーバ機能
+- 基礎的なルーティング
+- パラメータを使用した高度なルーティング
+
+### テンプレート
+### DB
 
 ## ORM
 

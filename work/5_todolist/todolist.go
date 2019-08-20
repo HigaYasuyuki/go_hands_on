@@ -1,10 +1,9 @@
 package main
 
 import (
+	"html/template"
 	"net/http"
-	"path/filepath"
 	"strconv"
-	"text/template"
 
 	"./model"
 
@@ -14,7 +13,7 @@ import (
 func index(w http.ResponseWriter, r *http.Request) {
 	tasks := model.GetTaskList()
 
-	t := template.Must(template.ParseFiles(filepath.Join("./todolist/templates", "base.html"), filepath.Join("./todolist/templates", "index.html")))
+	t := template.Must(template.ParseFiles("./templates/base.html", "./templates/index.html"))
 	t.ExecuteTemplate(w, "layout", tasks)
 }
 
@@ -27,7 +26,7 @@ func detail(w http.ResponseWriter, r *http.Request) {
 	if notFound {
 		http.NotFound(w, r)
 	} else {
-		t := template.Must(template.ParseFiles(filepath.Join("./todolist/templates", "base.html"), filepath.Join("./todolist/templates", "detail.html")))
+		t := template.Must(template.ParseFiles("./templates/base.html", "./templates/detail.html"))
 		t.ExecuteTemplate(w, "layout", task)
 	}
 
@@ -52,7 +51,7 @@ func edit(w http.ResponseWriter, r *http.Request) {
 }
 
 func create(w http.ResponseWriter, r *http.Request) {
-	t := template.Must(template.ParseFiles(filepath.Join("./todolist/templates", "base.html"), filepath.Join("./todolist/templates", "create.html")))
+	t := template.Must(template.ParseFiles("./templates/base.html", "./templates/create.html"))
 	t.ExecuteTemplate(w, "layout", "")
 }
 
