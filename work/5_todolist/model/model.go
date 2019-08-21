@@ -26,7 +26,7 @@ func Init() {
 	PROTOCOL := "tcp(mysql:3306)"
 	DBNAME := "gotodo"
 
-	CONNECT := USER + ":" + PASS + "@" + PROTOCOL + "/" + DBNAME + "?parseTime=true"
+	CONNECT := USER + ":" + PASS + "@" + PROTOCOL + "/" + DBNAME + "?parseTime=true&loc=Asia%2FTokyo"
 	var err error
 	db, err = gorm.Open(DBMS, CONNECT)
 

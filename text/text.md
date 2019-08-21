@@ -32,16 +32,16 @@ basics.md 参照
 - Go言語組み込みのhttpサーバ機能
 - 基礎的なルーティング
 - パラメータを使用した高度なルーティング
+`go get github.com/gorilla/mux`
 
 ### テンプレート
 - Go言語組み込みのテンプレート機能
   - テンプレートの解析、実行
 - アクション
-- 引数、変数、パイプ
 - レイアウト
 ### DB
+- ormライブラリgormの利用
+http://gorm.io/ja_JP/docs/
 
-## ORM
-
-`go get github.com/go-sql-driver/mysql`  
+`go get github.com/go-sql-driver/mysql`
 `go get github.com/jinzhu/gorm`

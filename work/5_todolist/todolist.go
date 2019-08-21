@@ -88,6 +88,7 @@ func incompleteList(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	model.Init()
+	defer model.CloseDB()
 
 	r := mux.NewRouter()
 	r.HandleFunc("/", index)
@@ -100,6 +101,4 @@ func main() {
 	r.HandleFunc("/incompleteList", incompleteList)
 
 	http.ListenAndServe(":8085", r)
-
-	defer model.CloseDB()
 }
