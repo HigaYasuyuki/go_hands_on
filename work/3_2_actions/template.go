@@ -25,16 +25,13 @@ func main() {
 	r := mux.NewRouter()
 	r.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 
-		funcMap := template.FuncMap{"fdate": formatDate}
+		t := template.Must(template.ParseFiles("template.html"))
 
-		tpl := template.Must(template.New("template.html").Funcs(funcMap).ParseFiles("template.html"))
-
-		tpl.Execute(w, map[string]interface{}{
+		t.Execute(w, map[string]interface{}{
 			"user":  user{Name: "a", Age: 19},
 			"map":   map[string]string{"key1": "val1", "key2": "val2"},
 			"slice": []string{"element1", "element2"},
 			"bool":  "",
-			"time":  time.Now(),
 		})
 	})
 

@@ -1,0 +1,30 @@
+{{ define "layout" }}
+{{/* {{ define "layout" }}と{{ end }}の中にあるものはすべて"layout"という名のテンプレートとみなされる */}}
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>layout</title>
+  </head>
+  <body>
+    <div class="container">
+    {{/* ドットを明示的に渡してやらなければ読み込んだテンプレート内でデータを利用できない */}}
+    {{ template "content" . }}
+    </div>
+    <div>
+    {{/* テンプレート名が定義されていなければファイル名がそのままテンプレート名としてみなされる */}}
+    {{ template "partial.html" }}
+    </div>
+    <div>
+    {{/* 同一ファイル内に別のテンプレートを定義することも可能 */}}
+    {{ template "inside" }}
+    </div>
+  </body>
+</html>
+
+{{ end }}
+
+{{ define "inside"}}
+<p>inside</p>
+{{ end }}
