@@ -57,3 +57,38 @@ func GetTaskList() []Task {
 
 	return tasks
 }
+
+// GetTask idを指定してTaskを取得
+func GetTask(id int) (task Task, notFound bool) {
+	notFound = db.Find(&task, id).RecordNotFound()
+
+	return task, notFound
+}
+
+// UpdateTask Taskの値を更新
+func UpdateTask(id int, description string, isComplete bool) (notfound bool) {
+	var task Task
+	notfound = db.Find(&task, id).RecordNotFound()
+	if !notfound {
+		db.Model(&task).Update(map[string]interface{}{"Description": description, "IsComplete": isComplete}).RecordNotFound()
+	}
+
+	return notfound
+}
+
+// RegisterTask Taskを新規登録
+func RegisterTask(description string) {
+	task := Task{Description: description, IsComplete: false}
+	db.Create(&task)
+}
+
+// DeleteTask Task削除
+func DeleteTask(id int) (notFound bool) {
+	var task Task
+	notFound = db.Find(&task, id).RecordNotFound()
+	if !notFound {
+		db.Delete(&task)
+	}
+
+	return notFound
+}
