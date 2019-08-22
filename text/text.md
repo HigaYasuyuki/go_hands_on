@@ -27,6 +27,32 @@
 ## 文法基礎
 basics.md 参照
 
+## 練習1
+- goでFizz Buzzを書いてみよう  
+- 1から100までの数字について、3で割り切れるときは`Fizz`、5で割り切れるときは`Buzz`、  
+どちらでも割り切れるときは`FizzBuzz`、どちらでも割り切れないときはその数字を出力するプログラム。
+
+出力例
+```
+1
+2
+Fizz
+4
+Buzz
+Fizz
+7
+8
+Fizz
+Buzz
+11
+Fizz
+13
+14
+FizzBuzz
+...
+```
+
+
 ## Webアプリ（ToDoリスト）を作る
 ### net/http を使ってwebサーバを提供する
 - Go言語組み込みのhttpサーバ機能
@@ -39,9 +65,24 @@ basics.md 参照
   - テンプレートの解析、実行
 - アクション
 - レイアウト
+
+## 練習2
+先程のFizzBuzzをテンプレートを使って出力してみましょう。  
+フォームから入力された数値を受け取り、  
+1 ~ その数値までをFizzBuzzした結果を  
+| ID | Fizz | Buzz | FizzBuzz |
+|----|------|------|----------|
+|3|○|||
+このようにテーブルとして出力します。
+3_4_practice ディレクトリに雛形を用意したのでそれをもとに作成してみてください。
+
+
 ### DB
-- ormライブラリgormの利用
+- ormライブラリgormの利用  
 http://gorm.io/ja_JP/docs/
 
 `go get github.com/go-sql-driver/mysql`
 `go get github.com/jinzhu/gorm`
+
+## 実際にtodoリストを作ってみよう!
+- 5_todolist ディレクトリの中に雛形を作っておいたので、CRUD機能を実装してみましょう

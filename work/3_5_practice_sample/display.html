@@ -1,0 +1,22 @@
+{{ define "content"}}
+<table class="table">
+    <thead>
+        <tr>
+        <th scope="col">Number</th>
+        <th scope="col">Fizz</th>
+        <th scope="col">Buzz</th>
+        <th scope="col">FizzBuzz</th>
+        </tr>
+    </thead>
+    <tbody>
+    {{ range . }}
+    <tr>
+        <th class="align-middle" scope="row">{{ .Number }}</th>
+        <td class="align-middle">{{ if .Fizz }}○{{ end }}</td>
+        <td class="align-middle">{{ if .Buzz }}○{{ end }}</td>
+        <td class="align-middle">{{ if and .Fizz .Buzz }}○{{ end }}</td>
+    </tr>
+    {{ end }}
+    </tbody>
+</table>
+{{ end }}

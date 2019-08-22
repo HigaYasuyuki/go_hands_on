@@ -1,0 +1,9 @@
+{{ define "content" }}
+<form action="/display" method="POST">
+    <div class="form-group">
+        <label for="number">数値入力</label>
+        <input type="number" class="form-control" name="number">
+    </div>
+    <button type="submit" class="btn btn-primary">送信する</button>
+</form>
+{{ end }}

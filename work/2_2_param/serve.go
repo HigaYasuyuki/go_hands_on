@@ -38,6 +38,13 @@ func main() {
 		fmt.Fprintf(w, "category: %v, id: %v", category, id)
 	})
 
+	// POSTパラメータの取得
+	r.HandleFunc("/post", func(w http.ResponseWriter, r *http.Request) {
+		r.ParseForm()
+		id := r.Form.Get("id")
+		fmt.Fprintf(w, "id: %v", id)
+	}).Methods("POST")
+
 	// mux.NewRouter()で作成したルーターをListenAndServeにわたす
 	http.ListenAndServe(":8085", r)
 }
