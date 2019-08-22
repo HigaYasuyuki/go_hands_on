@@ -17,10 +17,6 @@ func main() {
 		// errorを無視したいときはtemplate.Must()にtemplate.ParseFilesをそのまま渡してやると
 		// Ttemplate型だけを受け取ることができる
 		tpl := template.Must(template.ParseFiles("template.html"))
-		// 上記は
-		// tpl, _ := template.ParseFiles("template.html")
-		// と同じ
-
 		// テンプレートの内容を出力
 		// 第二引数はテンプレートに渡すデータ
 		tpl.Execute(w, "Hello, template")
