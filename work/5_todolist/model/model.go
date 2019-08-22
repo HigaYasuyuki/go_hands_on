@@ -68,7 +68,8 @@ func GetTask(id int) (task Task, notFound bool) {
 // UpdateTask Taskの値を更新
 func UpdateTask(id int, description string, isComplete bool) (notfound bool) {
 	var task Task
-	if notfound = db.Find(&task, id).RecordNotFound(); !notfound {
+	notfound = db.Find(&task, id).RecordNotFound()
+	if !notfound {
 		db.Model(&task).Update(map[string]interface{}{"Description": description, "IsComplete": isComplete}).RecordNotFound()
 	}
 
@@ -84,7 +85,8 @@ func RegisterTask(description string) {
 // DeleteTask Task削除
 func DeleteTask(id int) (notFound bool) {
 	var task Task
-	if notFound = db.Find(&task, id).RecordNotFound(); !notFound {
+	notFound = db.Find(&task, id).RecordNotFound()
+	if !notFound {
 		db.Delete(&task)
 	}
 
